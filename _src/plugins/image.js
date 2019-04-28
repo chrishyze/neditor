@@ -256,9 +256,9 @@ UE.commands["insertimage"] = {
           (ci["floatStyle"] == "left" || ci["floatStyle"] == "right"
             ? ' style="float:' + ci["floatStyle"] + ';"'
             : "") +
-          (ci.title && ci.title != "" ? ' title="' + ci.title + '"' : "") +
           (ci.border && ci.border != "0" ? ' border="' + ci.border + '"' : "") +
           (ci.alt && ci.alt != "" ? ' alt="' + ci.alt + '"' : "") +
+          (ci.title && ci.title != "" ? ' title="' + ci.title + '"' : ' title="' + ci.alt + '"') +
           (ci.hspace && ci.hspace != "0"
             ? ' hspace = "' + ci.hspace + '"'
             : "") +
@@ -289,7 +289,7 @@ UE.commands["insertimage"] = {
               : "") +
             (ci.border || "") +
             '" ' +
-            (ci.title ? ' title="' + ci.title + '"' : "") +
+            (ci.title ? ' title="' + ci.title + '"' : ' title="' + ci.alt + '"') +
             " /></p>";
           html.push(str);
         }

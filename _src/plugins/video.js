@@ -95,7 +95,7 @@ UE.plugins["video"] = function() {
             null,
             node.getStyle("float") || "",
             className,
-            img2video ? "embed" : "image"
+            img2video ? "video" : "image"
           );
           node.parentNode.replaceChild(UE.uNode.createElement(html), node);
         }

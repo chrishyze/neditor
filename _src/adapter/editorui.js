@@ -924,7 +924,7 @@
   };
 
   // 表情
-  editorui["emotion"] = function(editor, iframeUrl) {
+  editorui.emotion = function(editor, iframeUrl) {
     var cmd = "emotion";
     var ui = new editorui.MultiMenuPop({
       title:
@@ -951,7 +951,7 @@
     var ui = new editorui.AutoTypeSetButton({
       editor: editor,
       title:
-        editor.options.labelMap["autotypeset"] ||
+        editor.options.labelMap.autotypeset ||
           editor.getLang("labelMap.autotypeset") ||
           "",
       className: "edui-for-autotypeset",
@@ -959,7 +959,7 @@
         editor.execCommand("autotypeset");
       }
     });
-    editorui.buttons["autotypeset"] = ui;
+    editorui.buttons.autotypeset = ui;
     editor.addListener("selectionchange", function() {
       ui.setDisabled(editor.queryCommandState("autotypeset") == -1);
     });
@@ -967,7 +967,7 @@
   };
 
   /* 简单上传插件 */
-  editorui["simpleupload"] = function(editor) {
+  editorui.simpleupload = function(editor) {
     var name = "simpleupload",
       ui = new editorui.Button({
         className: "edui-for-" + name,
@@ -997,6 +997,24 @@
         }
       }
     });
+    return ui;
+  };
+
+  //后台设置
+  editorui.backendconfig = function(editor, title) {
+    var name = "backendconfig",
+        ui = new editorui.Button({
+          className: "edui-for-" + name,
+          title: editor.options.labelMap[name] ||
+            editor.getLang("labelMap." + name) ||
+            "",
+          onclick: function() {
+            location.href = UEDITOR_HOME_URL + "main.php";
+          },
+          theme: editor.options.theme
+        });
+    editorui.buttons[name] = ui;
+ 
     return ui;
   };
 })();

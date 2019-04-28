@@ -54,6 +54,11 @@
     height: 0;
     overflow: hidden;
     border-spacing: 0;
+    border: none !important;
+}
+
+td.edui-notadd {
+    border: none !important;
 }
 
 .edui-notadd .edui-editor-bottomContainer td {
