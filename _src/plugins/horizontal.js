@@ -14,13 +14,17 @@
  * editor.execCommand( 'horizontal' );
  * ```
  */
-UE.plugins["horizontal"] = function() {
+UE.plugins.horizontal = function() {
   var me = this;
-  me.commands["horizontal"] = {
+  me.commands.horizontal = {
     execCommand: function(cmdName) {
       var me = this;
       if (me.queryCommandState(cmdName) !== -1) {
-        me.execCommand("insertHtml", "<hr>");
+        if (me.document.getElementsByTagName("hr").length > 0) {
+          me.execCommand("insertHtml", "<hr>");
+        } else {
+          me.execCommand("insertHtml", "<hr class=\"more\" />");
+        }
         var range = me.selection.getRange(),
           start = range.startContainer;
         if (start.nodeType == 1 && !start.childNodes[range.startOffset]) {
@@ -47,8 +51,7 @@ UE.plugins["horizontal"] = function() {
       return domUtils.filterNodeList(
         this.selection.getStartElementPath(),
         "table"
-      )
-        ? -1
+      ) ? -1
         : 0;
     }
   };
