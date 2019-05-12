@@ -517,10 +517,9 @@ UE.I18N['ja-jp'] = {
     },
     'help':{
         'static':{
-            'lang_input_about':'UEditorについて',
+            'lang_input_about':'Neditorについて',
             'lang_input_shortcuts':'ショートカットキー',
-            'lang_input_introduction':'UEditorは、Baidu WebフロントエンドのR＆D部門によって開発された豊富なテキストWebエディタです。軽量で、カスタマイズ可能で、ユーザ優先などの特長が持っています。オープンソースはBSDプロトコルに基づいており、コードの自由な使用と変更が可能です。',
-			
+            'lang_input_introduction':'Neditorは、MITライセンスオープンソースに基づいて、Baidu UEditorに基づいてNotaddチームによって開発された、より近代的なリッチテキストエディタです。',
             'lang_Txt_shortcuts':'ショートカットキー',
             'lang_Txt_func':'機能',
             'lang_Txt_bold':'選択された文字列を太字にします',

@@ -522,7 +522,7 @@ UE.I18N['en'] = {
         'static':{
             'lang_input_about':'About',
             'lang_input_shortcuts':'Shortcuts',
-            'lang_input_introduction':"UEditor is developed by Baidu Co.ltd.  It is lightweight, customizable , focusing on user experience and etc. , UEditor is based on open source BSD license , allowing free use and redistribution.",
+            'lang_input_introduction':"Neditor is a modern rich text editor developed by the Notadd team based on Baidu UEditor, open source under the MIT License.",
             'lang_Txt_shortcuts':'Shortcuts',
             'lang_Txt_func':'Function',
             'lang_Txt_bold':'Bold',
