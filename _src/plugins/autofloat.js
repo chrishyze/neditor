@@ -121,7 +121,8 @@ UE.plugins["autofloat"] = function() {
       toolbarBox = me.ui.getDom("toolbarbox");
       orgTop = getPosition(toolbarBox).top;
       bakCssText = toolbarBox.style.cssText;
-      placeHolder.style.height = me.ui.getDom("iframeholder").offsetHeight + "px";
+      //placeHolder.style.height = me.ui.getDom("iframeholder").offsetHeight + "px";
+      placeHolder.style.height = (toolbarBox.offsetHeight + 4) + "px";
       if (LteIE6) {
         fixIE6FixedPos();
       }
