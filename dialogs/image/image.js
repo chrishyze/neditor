@@ -275,7 +275,7 @@
                     floatStyle: data['align'] || '',
                     vspace: data['vhSpace'] || '',
                     alt: data['title'] || '',
-                    style: "width:" + data['width'] + "px;height:" + data['height'] + "px;"
+                    style: ""
                 }];
             } else {
                 return [];
