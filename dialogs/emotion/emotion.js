@@ -3,7 +3,7 @@ window.onload = function () {
         emotionLocalization:false
     });
 
-    emotion.SmileyPath = editor.options.emotionLocalization === true ? 'images/' : "//imgbaidu.b0.upaiyun.com/hi/";
+    emotion.SmileyPath = editor.options.emotionLocalization === true ? 'images/' : editor.options.emotionURL;
     emotion.SmileyBox = createTabList( emotion.tabNum );
     emotion.tabExist = createArr( emotion.tabNum );
 
