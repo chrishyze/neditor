@@ -365,6 +365,7 @@ UE.I18N['ja-jp'] = {
         'floatRight':"右フロート",
         '"default"':"デフォルト",
         'block':"一行に占める",
+        'videoShouldBeHTML': 'ビデオ共有コードを貼り付けてください',
         'urlError':"動画URLは間違っています。チャックしてからもう一度お試しください！",
         'loading':" &nbsp;動画読み込み中、しばらくお待ちください...",
         'clickToSelect':"クリックして選択",
@@ -555,7 +556,7 @@ UE.I18N['ja-jp'] = {
             'lang_input_target':'新しいウィンドウで開きますか：'
         },
         'validLink':'リンクを選択する場合のみ、有効',
-        'httpPrompt':'ご入力いただいたハイパーリンクにはhttpなどのプロトコル名が含まれておらず、デフォルトはhttp://を追加します' 
+        'httpPrompt':'ご入力いただいたハイパーリンクにはhttpなどのプロトコル名が含まれておらず、デフォルトはhttp://を追加します'
     },
     'map':{
         'static':{

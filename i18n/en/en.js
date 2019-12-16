@@ -370,6 +370,7 @@ UE.I18N['en'] = {
         'floatRight':"Float right",
         'default':"Default",
         'block':"Display in block",
+        'videoShouldBeHTML': 'Please paste "Share code" for this video site',
         'urlError':"The video url format may be wrong!",
         'loading':" &nbsp;The video is loading, please wait…",
         'clickToSelect':"Click to select",

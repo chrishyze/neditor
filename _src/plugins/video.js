@@ -40,20 +40,18 @@ UE.plugins["video"] = function() {
           (align ? "float:" + align + ";" : "") +
           '" data-ad="1234567890"/>';
         break;
-      case "embed":
-        str =
-          '<embed type="application/x-shockwave-flash" class="' +
-          classname +
-          '" pluginspage="http://www.macromedia.com/go/getflashplayer"' +
-          ' src="' +
+      case 'iframe':
+        str = '<iframe class="' +
+        classname +
+          '" src="' +
           utils.html(url) +
           '" width="' +
-          width +
+          width  +
           '" height="' +
-          height +
-          '"' +
-          (align ? ' style="float:' + align + '"' : "") +
-          ' wmode="transparent" play="true" loop="false" menu="false" allowscriptaccess="never" allowfullscreen="true" >';
+          height  +
+          '"'  +
+          (align ? ' style="float:' + align + '"': '') +
+          ' allowfullscreen frameborder="0">';
         break;
       case "video":
         var ext = url.substr(url.lastIndexOf(".") + 1);
@@ -84,7 +82,7 @@ UE.plugins["video"] = function() {
 
   function switchImgAndVideo(root, img2video) {
     utils.each(
-      root.getNodesByTagName(img2video ? "img" : "embed video"),
+      root.getNodesByTagName(img2video ? "img" : "iframe video"),
       function(node) {
         var className = node.getAttr("class");
         if (className && className.indexOf("edui-faked-video") != -1) {

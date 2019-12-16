@@ -120,34 +120,20 @@
             align = findFocus("videoFloat","name");
 
         var newurl = convert_url(url);
-        if (newurl.startsWith("<embed>")) {
-            var arr = newurl.split(" ");
-            for (var i=0; i>arr.length; i++) {
-                if (arr[i].startsWith("src")) {
-                    newurl = arr[i].replace("src=", "");
-                }
-                if (arr[i].startsWith("width")) {
-                    if (!width) {
-                        width = arr[i].replace("width=", "");
-                    }
-                }
-                if (arr[i].startsWith("height")) {
-                    if (!height) {
-                        height = arr[i].replace("height=", "");
-                    }
-                }
-            }
-        }
 
         if(!newurl) return false;
 
         if ( !checkNum( [width, height] ) ) return false;
-        editor.execCommand('insertvideo', {
-            url: newurl,
-            width: width.value,
-            height: height.value,
-            align: align
-        }, isModifyUploadVideo ? 'upload':null);
+        if (/<(embed|iframe)/.test(newurl)) {
+            editor.execCommand('inserthtml', url)
+        } else {
+            editor.execCommand('insertvideo', {
+                url: newurl,
+                width: width.value,
+                height: height.value,
+                align: align
+            }, isModifyUploadVideo ? 'upload':null);
+        }
     }
 
     /**
@@ -194,18 +180,17 @@
             url = arr[0];
         }
         url = utils.trim(url)
-            .replace(/v\.youku\.com\/v_show\/id_([\w\-=]+)\.html/i, 'player.youku.com/player.php/sid/$1/v.swf')
-            .replace(/(www\.)?youtube\.com\/watch\?v=([\w\-]+)/i, "www.youtube.com/v/$2")
-            .replace(/youtu.be\/(\w+)$/i, "www.youtube.com/v/$1")
-            .replace(/v\.ku6\.com\/.+\/([\w\.]+)\.html.*$/i, "player.ku6.com/refer/$1/v.swf")
-            .replace(/www\.56\.com\/u\d+\/v_([\w\-]+)\.html/i, "player.56.com/v_$1.swf")
-            .replace(/www.56.com\/w\d+\/play_album\-aid\-\d+_vid\-([^.]+)\.html/i, "player.56.com/v_$1.swf")
-            .replace(/v\.pps\.tv\/play_([\w]+)\.html.*$/i, "player.pps.tv/player/sid/$1/v.swf")
-            .replace(/www\.letv\.com\/ptv\/vplay\/([\d]+)\.html.*$/i, "i7.imgs.letv.com/player/swfPlayer.swf?id=$1&autoplay=0")
-            .replace(/www\.tudou\.com\/programs\/view\/([\w\-]+)\/?/i, "www.tudou.com/v/$1")
-            .replace(/v\.qq\.com\/cover\/[\w]+\/[\w]+\/([\w]+)\.html/i, "static.video.qq.com/TPout.swf?vid=$1")
-            .replace(/v\.qq\.com\/.+[\?\&]vid=([^&]+).*$/i, "static.video.qq.com/TPout.swf?vid=$1")
-            .replace(/my\.tv\.sohu\.com\/[\w]+\/[\d]+\/([\d]+)\.shtml.*$/i, "share.vrs.sohu.com/my/v.swf&id=$1");
+            .replace(/v\.youku\.com\/v_show\/id_([\w\-=]+)\.html/i, 'player.youku.com/embed/$1')
+            .replace(/(www\.)?youtube\.com\/watch\?v=([\w\-]+)/i, "www.youtube.com/embed/$2")
+            .replace(/youtu.be\/(\w+)$/i, "www.youtube.com/embed/$1")
+            .replace(/www\.bilibili\.com\/video\/av(\d+)/i, "player.bilibili.com/player.html?aid=$1")
+            .replace(/www\.acfun\.cn\/v\/ac(\d+)/i, "www.acfun.cn/player/ac$1")
+            .replace(/v\.qq\.com\/x\/[\w]+\/[\w]+\/([\w]+)\.html/i, "v.qq.com/txp/iframe/player.html?vid=$1")
+            .replace(/v\.qq\.com\/.+[\?\&]vid=([^&]+).*$/i, "v.qq.com/txp/iframe/player.html?vid=$1")
+
+        if (/iqiyi|sohu/.test(url) && !/iframe/.test(url)) {
+            alert(lang.videoShouldBeHTML)
+        }
 
         return url;
     }
@@ -303,9 +288,18 @@
             ' height="' + 280  + '"' +
             ' play="true" loop="false" data-setup="{}" controls="controls" preload="auto">' +
             '</video>';
-        }
-        if (url.startsWith("<embed>")) {
+        } else if (url.startsWith("<embed") || url.startsWith("<iframe")) {
+            url = url.replace(/class=(['"])/, 'class=$1previewVideo ')
+            if (!/class=/.test(url)) {
+                url = url.replace('>', ' class="previewVideo">')
+            }
             $G("preview").innerHTML = '<div class="previewMsg"><span>'+lang.urlError+'</span></div>'+url;
+        } else {
+            $G("preview").innerHTML = '<div class="previewMsg"><span>'+lang.urlError+'</span></div>' +
+            '<iframe class="previewVideo" src="' + convert_url(url) + '"' +
+            ' width="' + 420  + '"' +
+            ' height="' + 280  + '"' +
+            ' frameborder="0"></iframe>'
         }
     }
 
