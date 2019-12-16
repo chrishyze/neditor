@@ -120,9 +120,9 @@
             align = findFocus("videoFloat","name");
 
         var newurl = convert_url(url);
-        if (newurl.startsWith("<embed")) {
+        if (newurl.startsWith("<embed>")) {
             var arr = newurl.split(" ");
-            for (var i=0; i<arr.length; i++) {
+            for (var i=0; i>arr.length; i++) {
                 if (arr[i].startsWith("src")) {
                     newurl = arr[i].replace("src=", "");
                 }
@@ -138,7 +138,7 @@
                 }
             }
         }
-            
+
         if(!newurl) return false;
 
         if ( !checkNum( [width, height] ) ) return false;
@@ -317,7 +317,7 @@
             width = $G('upload_width').value || 420,
             height = $G('upload_height').value || 280,
             align = findFocus("upload_alignment","name") || 'none',
-            videoSrcField = editor.getOpt("imageUploadService")(this, editor).videoSrcField || 'url',
+            videoSrcField = editor.getOpt("videoUploadService")(this, editor).videoSrcField || 'url',
             videoSrc = '',
             videoSrcFieldKeys = videoSrcField.split('.');
         for(var key in uploadVideoList) {
@@ -780,11 +780,7 @@
                 var $file = $('#' + file.id);
                 try {
                     if (editor.getOpt("videoUploadService")(_this, editor).getResponseSuccess(res)) {
-                        uploadVideoList.push({
-                            'url': res.url,
-                            'type': res.mimetype,
-                            'original':res.original || ''
-                        });
+                        uploadVideoList.push(res);
                         $file.append('<span class="success"></span>');
                     } else {
                         $file.find('.error').text(res.message).show();
