@@ -205,6 +205,7 @@ UE.I18N['zh-cn'] = {
     'justifyleft':'左对齐',
     'justifyright':'右对齐',
     'justifycenter':'居中',
+    'justifyjustify':'两端对齐',
     'justify':'默认',
     'clear':'清除',
     'anchorMsg':'锚点',
@@ -370,7 +371,6 @@ UE.I18N['zh-cn'] = {
         'floatRight':"右浮动",
         'default':"默认",
         'block':"独占一行",
-        'videoShouldBeHTML': '针对爱奇艺、搜狐等网站，请粘贴分享代码而非视频地址',
         'urlError':"输入的视频地址有误，请检查后再试！",
         'loading':" &nbsp;视频加载中，请等待……",
         'clickToSelect':"点击选中",
@@ -523,9 +523,9 @@ UE.I18N['zh-cn'] = {
     },
     'help':{
         'static':{
-            'lang_input_about':'关于Neditor',
+            'lang_input_about':'关于UEditor',
             'lang_input_shortcuts':'快捷键',
-            'lang_input_introduction':'Neditor是Notadd团队基于百度UEditor开发的更现代化的富文本编辑器，基于MIT License开源。',
+            'lang_input_introduction':'UEditor是由百度web前端研发部开发的所见即所得富文本web编辑器，具有轻量，可定制，注重用户体验等特点。开源基于BSD协议，允许自由使用和修改代码。',
             'lang_Txt_shortcuts':'快捷键',
             'lang_Txt_func':'功能',
             'lang_Txt_bold':'给选中字设置为加粗',

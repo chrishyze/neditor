@@ -200,6 +200,7 @@ UE.I18N['ja-jp'] = {
     'justifyleft':'左揃え',
     'justifyright':'右揃え',
     'justifycenter':'中央揃え',
+    'justifyjustify':'両端揃え',
     'justify':'デフォルト',
     'clear':'クリア',
     'anchorMsg':'アンカー',
